@@ -28,7 +28,13 @@ new #[Layout('layouts.guest')] class extends Component
 
         $validated['password'] = Hash::make($validated['password']);
 
-        event(new Registered($user = User::create($validated)));
+        $user = User::create($validated);
+
+        event(new Registered($user));
+
+        $userRole = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
+
+        $user->assignRole($userRole);
 
         Auth::login($user);
 
@@ -77,11 +83,11 @@ new #[Layout('layouts.guest')] class extends Component
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}" wire:navigate>
-                {{ __('Already registered?') }}
+                {{ __('hahahahahahahah') }}
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('hassan') }}
             </x-primary-button>
         </div>
     </form>
