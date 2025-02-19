@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        $adminRole = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
-        $userRole = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
+        Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+        Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
 
 
         $admin = User::factory()->create([
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make("admin")
         ]);
 
-        $admin->assignRole($adminRole);
+        $admin->assignRole('admin');
     
     }
 }
