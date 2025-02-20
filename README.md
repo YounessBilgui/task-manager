@@ -75,5 +75,5 @@ Task Manager is a web application built with Laravel and Livewire. It allows use
 To start the development server, run:
 
 ```bash
-php artisan serve
+php composer run dev
 ```

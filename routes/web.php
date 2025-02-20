@@ -20,7 +20,7 @@ Route::get('task-manager', TaskManager::class)
     ->name('task-manager');
     
 Route::get('user-manager', UserManger::class)
-    ->middleware(['auth', 'admin'])
+    ->middleware(['auth', 'role:admin',])
     ->name('user-manager');    
 
 Route::view('profile', 'profile')
